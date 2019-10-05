@@ -7,7 +7,7 @@ from requests import session
 
 lam = boto3.client('lambda')
 s3 = boto3.resource('s3')
-s3bucket = "ens-bkp-lambda"
+s3bucket = "TU_BUCKET_PERSONAL"
 
 
 def lambda_handler(event, context):
@@ -27,14 +27,14 @@ def lambda_handler(event, context):
     backup_funciones(base_path)
 
 def backup_capas(base_path):
-    response = client.list_layers()
+    response = lam.list_layers()
     layers = response['Layers']
     print("Se econtraron", len(layers), "Capas")
     for layer in response['Layers']:
         print("\nProcesando [", layer['LayerName'], ":", layer['LayerArn'], "]\n", 100*"*", "\n")
         print("Version:", layer['LatestMatchingVersion']['Version'])
         print("Runtimes:", repr(layer['LatestMatchingVersion']['CompatibleRuntimes']))
-        full_layer = client.get_layer_version_by_arn(
+        full_layer = lam.get_layer_version_by_arn(
             Arn=layer['LatestMatchingVersion']['LayerVersionArn']
         )
 
