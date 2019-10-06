@@ -7,4 +7,4 @@
 3. Llamar a backup_capas(folder) o backup_funciones(folder)
 
 
-[La guia de uso está acá] (https://dev.to/ensamblador/respaldando-tus-funciones-lambda-3ema)
+[La guia de uso está acá](https://dev.to/ensamblador/respaldando-tus-funciones-lambda-3ema)
