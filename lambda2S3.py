@@ -67,14 +67,15 @@ def backup_funciones(base_path):
     funciones = response['Functions'] #Todas las funciones
 
     print("Encontramos {} funciones".format(len (funciones)))
-
+    
     for fn in funciones:
         layers = 0
         if hasattr(fn, 'Layers'):
             layers = len(fn['Layers'])
 
-        print("\nProcesando [{}] : {}\n".format(fn['FunctionName'], fn['FunctionArn']))
-        print("Runtime: {}\n Descripcion:{}\n Tamaño: {}\n Capas:{}\n".format(
+        print("Procesando [{}] : {}\nRuntime: {}\n Descripcion:{}\n Tamaño: {}\n Capas:{}\n".format(
+            fn['FunctionArn'],
+            fn['FunctionName'],
             fn['Runtime'],
             fn['Description'], 
             fn['CodeSize'], 
@@ -122,5 +123,5 @@ def backup_funciones(base_path):
 
 
 
-#backup_capas()
-#backup_funciones(base_path)
+#backup_capas('./archivos/')
+#backup_funciones('./archivos/')
